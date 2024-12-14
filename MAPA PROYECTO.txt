@@ -1,0 +1,76 @@
+PS C:\xampp\htdocs\propiedades> tree /F /A
+Listado de rutas de carpetas
+El número de serie del volumen es 58D9-DEFE
+C:.
+|   base de datos.txt
+|   index.html
+|   index.php
+|   login.html
+|   
++---assets
+|   +---css
+|   |       styles.css
+|   |       
+|   \---images
+|           logo.png
+|
++---config
+|       database.php
+|
++---controllers
+|       AuthController.php
+|       DashboardController.php
+|       PQRSController.php
+|       PropiedadController.php
+|       UsuarioController.php
+|       VehiculoController.php
+|
++---includes
+|       auth_check.php
+|       footer.php
+|       header.php
+|       sidebar.php
+|
++---models
++---pages
+|       configuracion.html
+|       pqrs.html
+|       propiedades.html
+|       usuarios.html
+|       vehiculos.html
+|
++---template
+|       layout.html
+|
+\---views
+    +---auth
+    |       login.php
+    |       logout.php
+    |
+    +---pqrs
+    |   |   crear.php
+    |   |   mis_pqrs.php
+    |   |   obtener_detalle.php
+    |   |
+    |   \---admin
+    |           index.php
+    |           obtener_detalle.php
+    |           responder.php
+    |
+    +---propiedades
+    |       crear.php
+    |       editar.php
+    |       eliminar.php
+    |       index.php
+    |
+    +---usuarios
+    |       crear.php
+    |       editar.php
+    |       eliminar.php
+    |       index.php
+    |
+    \---vehiculos
+            crear.php
+            editar.php
+            eliminar.php
+            index.php

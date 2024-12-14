@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Sistema de Propiedades</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="PropiedadesApp Logo" class="logo">
+                <h2>PropiedadesApp</h2>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Dashboard</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+            <li><a href="propiedades.html">Propiedades</a></li>
+            <li><a href="vehiculos.html">Vehículos</a></li>
+            <li><a href="pqrs.html">PQRS</a></li>
+            <li><a href="configuracion.html">Configuración</a></li>
+            <li><a href="../login.html">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <h1>Configuración de Módulos por Rol</h1>
+        </div>
+        
+        <!-- Configuración de Roles -->
+        <div class="config-container">
+            <div class="role-selector">
+                <label for="rol">Seleccionar Rol</label>
+                <select id="rol" onchange="cargarPermisosRol()">
+                    <option value="admin">Administrador</option>
+                    <option value="residente">Residente</option>
+                    <option value="vigilante">Vigilante</option>
+                    <option value="contador">Contador</option>
+                </select>
+            </div>
+
+            <div class="permissions-grid">
+                <h3>Permisos del Rol</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Módulo</th>
+                            <th>Ver</th>
+                            <th>Crear</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dashboard</td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" disabled></td>
+                            <td><input type="checkbox" disabled></td>
+                            <td><input type="checkbox" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Usuarios</td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Propiedades</td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Vehículos</td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                        </tr>
+                        <tr>
+                            <td>PQRS</td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="role-actions">
+                <button class="btn-primary" onclick="guardarConfiguracion()">Guardar Configuración</button>
+                <button class="btn-secondary" onclick="restaurarDefecto()">Restaurar Valores por Defecto</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cargarPermisosRol() {
+            // Aquí iría la lógica para cargar los permisos según el rol seleccionado
+            console.log('Cargando permisos del rol seleccionado...');
+        }
+
+        function guardarConfiguracion() {
+            alert('Configuración guardada exitosamente');
+        }
+
+        function restaurarDefecto() {
+            if(confirm('¿Está seguro de restaurar los valores por defecto?')) {
+                // Aquí iría la lógica para restaurar valores
+                alert('Valores restaurados correctamente');
+            }
+        }
+    </script>
+
+    <style>
+        .config-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .role-selector {
+            margin-bottom: 20px;
+        }
+
+        .role-selector select {
+            margin-top: 10px;
+            padding: 8px;
+            width: 200px;
+        }
+
+        .permissions-grid {
+            margin: 20px 0;
+        }
+
+        .role-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .table input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+</body>
+</html>

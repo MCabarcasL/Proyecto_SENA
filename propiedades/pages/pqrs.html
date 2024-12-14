@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQRS - Sistema de Propiedades</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="PropiedadesApp Logo" class="logo">
+                <h2>PropiedadesApp</h2>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Dashboard</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+            <li><a href="propiedades.html">Propiedades</a></li>
+            <li><a href="vehiculos.html">Vehículos</a></li>
+            <li><a href="pqrs.html">PQRS</a></li>
+            <li><a href="configuracion.html">Configuración</a></li>
+            <li><a href="../login.html">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <h1>Gestión de PQRS</h1>
+            <button class="btn-primary" onclick="mostrarFormulario()">Nueva PQRS</button>
+        </div>
+        
+        <!-- Formulario (inicialmente oculto) -->
+        <div class="form-container" id="formularioPQRS" style="display: none;">
+            <form class="form-standard">
+                <div class="form-group">
+                    <label for="tipo">Tipo de Solicitud</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="">Seleccione un tipo</option>
+                        <option value="peticion">Petición</option>
+                        <option value="queja">Queja</option>
+                        <option value="reclamo">Reclamo</option>
+                        <option value="sugerencia">Sugerencia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" name="asunto" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad" name="prioridad" required>
+                        <option value="">Seleccione la prioridad</option>
+                        <option value="alta">Alta</option>
+                        <option value="media">Media</option>
+                        <option value="baja">Baja</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="archivo">Adjuntar Archivo</label>
+                    <input type="file" id="archivo" name="archivo">
+                </div>
+                <button type="submit" class="btn-primary">Enviar PQRS</button>
+                <button type="button" class="btn-secondary" onclick="ocultarFormulario()">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Tabla de PQRS -->
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Tipo</th>
+                        <th>Asunto</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Prioridad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PQR-001</td>
+                        <td>Queja</td>
+                        <td>Ruido excesivo</td>
+                        <td>2024-03-11</td>
+                        <td>En proceso</td>
+                        <td>Alta</td>
+                        <td>
+                            <button class="btn-edit">Ver Detalle</button>
+                            <button class="btn-delete">Cerrar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function mostrarFormulario() {
+            document.getElementById('formularioPQRS').style.display = 'block';
+        }
+
+        function ocultarFormulario() {
+            document.getElementById('formularioPQRS').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

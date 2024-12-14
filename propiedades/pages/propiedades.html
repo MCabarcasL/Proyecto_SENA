@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades - Sistema de Propiedades</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="PropiedadesApp Logo" class="logo">
+                <h2>PropiedadesApp</h2>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Dashboard</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+            <li><a href="propiedades.html">Propiedades</a></li>
+            <li><a href="vehiculos.html">Vehículos</a></li>
+            <li><a href="pqrs.html">PQRS</a></li>
+            <li><a href="configuracion.html">Configuración</a></li>
+            <li><a href="../login.html">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <h1>Gestión de Propiedades</h1>
+            <button class="btn-primary" onclick="mostrarFormulario()">Nueva Propiedad</button>
+        </div>
+        
+        <!-- Formulario (inicialmente oculto) -->
+        <div class="form-container" id="formularioPropiedad" style="display: none;">
+            <form class="form-standard">
+                <div class="form-group">
+                    <label for="numero">Número de Propiedad</label>
+                    <input type="text" id="numero" name="numero" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de Propiedad</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="">Seleccione un tipo</option>
+                        <option value="apartamento">Apartamento</option>
+                        <option value="casa">Casa</option>
+                        <option value="local">Local Comercial</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="area">Área (m²)</label>
+                    <input type="number" id="area" name="area" required>
+                </div>
+                <div class="form-group">
+                    <label for="propietario">Propietario</label>
+                    <input type="text" id="propietario" name="propietario" required>
+                </div>
+                <button type="submit" class="btn-primary">Guardar Propiedad</button>
+                <button type="button" class="btn-secondary" onclick="ocultarFormulario()">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Tabla de Propiedades -->
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Tipo</th>
+                        <th>Área</th>
+                        <th>Propietario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>Apartamento</td>
+                        <td>75 m²</td>
+                        <td>María González</td>
+                        <td>
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function mostrarFormulario() {
+            document.getElementById('formularioPropiedad').style.display = 'block';
+        }
+
+        function ocultarFormulario() {
+            document.getElementById('formularioPropiedad').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

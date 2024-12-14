@@ -1,0 +1,90 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS propiedades_horizontales;
+USE propiedades_horizontales;
+
+-- Tabla de Roles
+CREATE TABLE roles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla de Usuarios
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    telefono VARCHAR(20),
+    rol_id INT,
+    estado BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (rol_id) REFERENCES roles(id)
+);
+
+-- Tabla de Propiedades
+CREATE TABLE propiedades (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    numero VARCHAR(20) NOT NULL,
+    tipo VARCHAR(50) NOT NULL, -- apartamento, casa, local
+    area DECIMAL(10,2),
+    propietario_id INT,
+    estado BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (propietario_id) REFERENCES usuarios(id)
+);
+
+-- Tabla de Vehículos
+CREATE TABLE vehiculos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    placa VARCHAR(20) UNIQUE NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50),
+    tipo VARCHAR(30), -- carro, moto, bicicleta
+    propietario_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (propietario_id) REFERENCES usuarios(id)
+);
+
+-- Tabla de PQRS
+CREATE TABLE pqrs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(20) NOT NULL, -- peticion, queja, reclamo, sugerencia
+    asunto VARCHAR(200) NOT NULL,
+    descripcion TEXT NOT NULL,
+    estado VARCHAR(20) DEFAULT 'pendiente', -- pendiente, en_proceso, resuelto
+    prioridad VARCHAR(20), -- alta, media, baja
+    usuario_id INT, -- usuario que crea la PQRS
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- Tabla de Permisos por Rol
+CREATE TABLE permisos_roles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    rol_id INT,
+    modulo VARCHAR(50) NOT NULL, -- usuarios, propiedades, vehiculos, pqrs
+    crear BOOLEAN DEFAULT false,
+    leer BOOLEAN DEFAULT false,
+    actualizar BOOLEAN DEFAULT false,
+    eliminar BOOLEAN DEFAULT false,
+    FOREIGN KEY (rol_id) REFERENCES roles(id)
+);
+
+-- Insertar roles básicos
+INSERT INTO roles (nombre, descripcion) VALUES 
+('Administrador', 'Acceso completo al sistema'),
+('Residente', 'Acceso limitado a funciones básicas'),
+('Vigilante', 'Acceso a registro de vehículos y visitantes');
+
+-- Insertar permisos para el rol Administrador
+INSERT INTO permisos_roles (rol_id, modulo, crear, leer, actualizar, eliminar) VALUES
+(1, 'usuarios', true, true, true, true),
+(1, 'propiedades', true, true, true, true),
+(1, 'vehiculos', true, true, true, true),
+(1, 'pqrs', true, true, true, true);
+
+-- Crear usuario administrador por defecto
+INSERT INTO usuarios (nombre, email, password, rol_id) VALUES 
+('Admin', 'admin@example.com', 'admin123', 1);

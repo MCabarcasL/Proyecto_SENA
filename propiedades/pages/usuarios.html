@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - Sistema de Propiedades</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="PropiedadesApp Logo" class="logo">
+                <h2>PropiedadesApp</h2>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Dashboard</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+            <li><a href="propiedades.html">Propiedades</a></li>
+            <li><a href="vehiculos.html">Vehículos</a></li>
+            <li><a href="pqrs.html">PQRS</a></li>
+            <li><a href="configuracion.html">Configuración</a></li>
+            <li><a href="../login.html">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <h1>Gestión de Usuarios</h1>
+            <button class="btn-primary" onclick="mostrarFormulario()">Nuevo Usuario</button>
+        </div>
+        
+        <!-- Formulario (inicialmente oculto) -->
+        <div class="form-container" id="formularioUsuario" style="display: none;">
+            <form class="form-standard">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select id="rol" name="rol" required>
+                        <option value="">Seleccione un rol</option>
+                        <option value="admin">Administrador</option>
+                        <option value="residente">Residente</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Guardar Usuario</button>
+                <button type="button" class="btn-secondary" onclick="ocultarFormulario()">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Tabla de Usuarios -->
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Juan Pérez</td>
+                        <td>juan@ejemplo.com</td>
+                        <td>123456789</td>
+                        <td>Administrador</td>
+                        <td>
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function mostrarFormulario() {
+            document.getElementById('formularioUsuario').style.display = 'block';
+        }
+
+        function ocultarFormulario() {
+            document.getElementById('formularioUsuario').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
